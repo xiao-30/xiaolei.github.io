@@ -22,7 +22,7 @@
 
   
 
-  <title>my-first-blog | Hexo</title>
+  <title>关于生命周期的一些知识点 | Hexo</title>
 
   
 
@@ -99,12 +99,17 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">my-first-blog</h1>
+          <h1 class="title-wrap">关于生命周期的一些知识点</h1>
           <h2 class="title-sub-wrap">
             <strong>John Doe</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2024-07-25T09:02:20.000Z" itemprop="datePublished">2024-07-25</time>
+            <time  class="article-date" datetime="2024-07-25T08:19:27.552Z" itemprop="datePublished">2024-07-25</time>
           </h2>
+          
+            <h2 class="last-time">
+              <span>最后更新于</span>
+              <time  class="article-updated" datetime="2024-07-27T02:11:03.856Z" itemprop="dateUpdated">2024-07-27</time>
+            </h2>
           
           
           <ul class="wrap-list dark">
@@ -134,14 +139,63 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <hr>
-<h3 id="这是我的第一个博客"><a href="#这是我的第一个博客" class="headerlink" title="这是我的第一个博客"></a>这是我的第一个博客</h3>
+        <h2 id="生命周期有哪些？-（vue2中）"><a href="#生命周期有哪些？-（vue2中）" class="headerlink" title="生命周期有哪些？ （vue2中）"></a>生命周期有哪些？ （vue2中）</h2><blockquote>
+<ul>
+<li>beforeCreate : 组件实例被创建之前</li>
+<li>created : 组件实例已经完全创建</li>
+<li>beforeMount : 组件挂载之前</li>
+<li>mounted : 组件挂载到实例之后</li>
+<li>beforeUpdate : 组件数据发生变化，更新之前</li>
+<li>updated : 组件数据更新之后</li>
+<li>beforeDestory : 组件数据销毁之前</li>
+<li>destoryed : 组件数据销毁之后</li>
+</ul>
+</blockquote>
+<h3 id="一旦进入组件会执行哪些生命周期？"><a href="#一旦进入组件会执行哪些生命周期？" class="headerlink" title="一旦进入组件会执行哪些生命周期？"></a>一旦进入组件会执行哪些生命周期？</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">//组间实例被创建之前</span></span><br><span class="line">  <span class="title function_">beforeCreate</span>(<span class="params"></span>) &#123;              <span class="comment">//undefined  undefined</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;beforeCreate&quot;</span> , <span class="variable language_">this</span>.<span class="property">$el</span>, <span class="variable language_">this</span>.<span class="property">$data</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//组件实例已经完全被创建</span></span><br><span class="line">  <span class="title function_">created</span>(<span class="params"></span>) &#123;                <span class="comment">//undefined   可以获取到data数据</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;created&quot;</span>, <span class="variable language_">this</span>.<span class="property">$el</span>, <span class="variable language_">this</span>.<span class="property">$data</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件挂载之前</span></span><br><span class="line">  <span class="title function_">beforeMount</span>(<span class="params"></span>) &#123;               <span class="comment">//undefined   可以获取到data数据</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;beforeMount&quot;</span>, <span class="variable language_">this</span>.<span class="property">$el</span>, <span class="variable language_">this</span>.<span class="property">$data</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件挂载到实例之后</span></span><br><span class="line">  <span class="title function_">mounted</span>(<span class="params"></span>) &#123;               <span class="comment">// 可以获取到dom节点  可以获取到data数据</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;mounted&quot;</span>, <span class="variable language_">this</span>.<span class="property">$el</span>, <span class="variable language_">this</span>.<span class="property">$data</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件数据发生变化，更新之前</span></span><br><span class="line">  <span class="title function_">beforeUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;beforeUpdate&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件数据更新之后</span></span><br><span class="line">  <span class="title function_">updated</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;updated&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件数据销毁之前</span></span><br><span class="line">  <span class="title function_">beforeDestroy</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;beforeDestroy&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件数据销毁之后</span></span><br><span class="line">  <span class="title function_">destroyed</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;destroyed&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">str</span>: <span class="number">123</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>一旦进入组件 就会执行前四个生命周期<blockquote>
+<ol>
+<li>beforeCreate</li>
+<li>created     (在前两个生命周期中是没有dom的)</li>
+<li>beforeMount</li>
+<li>beforeMount</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h3 id="父组件引入子组件，生命周期执行的先后顺序是什么？"><a href="#父组件引入子组件，生命周期执行的先后顺序是什么？" class="headerlink" title="父组件引入子组件，生命周期执行的先后顺序是什么？"></a>父组件引入子组件，生命周期执行的先后顺序是什么？</h3><blockquote>
+<ul>
+<li>父组件的 beforeCreate    </li>
+<li>父组件的 created</li>
+<li>父组件的 beforeMount</li>
+<li>子组件的 beforeCreate</li>
+<li>子组件的 created</li>
+<li>子组件的 beforeMount</li>
+<li>子组件的 mounted</li>
+<li>父组件的 mounted</li>
+</ul>
+</blockquote>
+<p><strong>如果引入多个子组件，那么也先执行 父组件的前三个生命周期，然后再执行子组件的前四个生命周期，当引入多个子组件的时候，按照子组件引入到父组件的先后顺序依次执行，最后执行父组件的 mounted</strong></p>
+<h3 id="在-created-中如何获取-dom"><a href="#在-created-中如何获取-dom" class="headerlink" title="在 created 中如何获取 dom?"></a>在 created 中如何获取 dom?</h3><blockquote>
+<p>当生命周期中有异步请求的时候，不论在 beforeCreate 中还是 created,beforeMount 中，都可以获取dom<br>只要写异步代码，获取dom 是在异步请求中获取的，因为异步永远慢于同步同步。<br>例如使用  setTimeout&#x2F; 请求&#x2F; Promise.xxxx()<br>还可以使用vue系统 内置的 this.$nextTick() 方法 都可以获取dom</p>
+</blockquote>
+<h3 id="为什么不在-beforeCreate-中发送请求？"><a href="#为什么不在-beforeCreate-中发送请求？" class="headerlink" title="为什么不在 beforeCreate 中发送请求？"></a>为什么不在 beforeCreate 中发送请求？</h3><blockquote>
+<p>如果请求是封装在 methods 中的，在 beforeCreate 中调用请求的方法时，beforeCreate是拿不到 methods 里面的方法的（会报错）</p>
+</blockquote>
+<h4 id="beforeCreate-和-created-的区别？"><a href="#beforeCreate-和-created-的区别？" class="headerlink" title="beforeCreate 和 created 的区别？"></a>beforeCreate 和 created 的区别？</h4><blockquote>
+<p>beforeCreate 没有 $data 也没有 $el<br>created 有 $data， 没有 $el<br>beforeCreate 中是不能拿到 methods 中的方法的<br>created 中是可以拿到 methods 中的方法的</p>
+</blockquote>
+<h4 id="发送请求在-created-中还是在mounted-中？"><a href="#发送请求在-created-中还是在mounted-中？" class="headerlink" title="发送请求在 created 中还是在mounted 中？"></a>发送请求在 created 中还是在mounted 中？</h4><blockquote>
+<p> 这个问题要看项目和业务的情况，因为组件加载的顺序是 先执行父组件的前三个生命周期（beforeCreate , created , beforeMount） ，然后再执行子组件的前四个生命周期（beforeCreate , created , beforeMount , mounted），当我们的业务需要先加载子组件的数据，然后再加载父组件的数据，那么就放在 mounted 中，如果父组件的数据不需要加载，那么就放在 created 中，所以，发送请求在created 中，还是在 mounted 中 ，要看我们的业务情况和需求</p>
+</blockquote>
+
       </section>
 
       
       
         <nav class="article-nav">
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
@@ -152,10 +206,11 @@
           <h2 class="card-text--title text-ellipsis">Hello World</h2>
         </a>
       
-      <div class="card-text--row">Older</div>
+      <div class="card-text--row">Newer</div>
     </div>
   </article>
 </div>
+          
           
         </nav>
       
