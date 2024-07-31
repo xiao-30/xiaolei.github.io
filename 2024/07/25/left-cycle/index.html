@@ -108,7 +108,7 @@
           
             <h2 class="last-time">
               <span>最后更新于</span>
-              <time  class="article-updated" datetime="2024-07-28T11:44:55.431Z" itemprop="dateUpdated">2024-07-28</time>
+              <time  class="article-updated" datetime="2024-07-31T00:26:47.540Z" itemprop="dateUpdated">2024-07-31</time>
             </h2>
           
           
@@ -218,6 +218,15 @@
 <li>Created</li>
 <li>beforeMount</li>
 <li>mounted</li>
+</ol>
+</li>
+<li><p>你在什么情况下使用过生命周期？说一说生命周期使用场景</p>
+<ol>
+<li><strong>created</strong> 当有父组件和子组件的时候，根据项目需求需要先加载父组件然后再加载子组件的时候。父组件在发送请求的时候，需要在 <strong>created</strong> 中发送请求，因为同时拥有子组件和父组件的时候，父组件会先执行前三个生命周期（beforeCreare,created , beforeMount）,然后再去执行子组件的前四个生命周期 （beforeCreate,created , beforeMount , mounted）,所以父组件发送请求的时候应该在 created 中发送请求。</li>
+<li><strong>mounted</strong> 当有父组件和子组件的时候，根据项目需求需要先加载子组件然后再加载父组件的时候。父组件在发送请求的时候，需要在 <strong>mounted</strong> 中发送请求，因为同时拥有子组件和父组件的时候，父组件会先执行前三个生命周期（beforeCreare,created , beforeMount）,然后再去执行子组件的前四个生命周期 （beforeCreate,created , beforeMount , mounted）,然后再去执行父组件中的 mounted ,所以当子组件需要先加载的时候，父组件后加载的时候，父组件的请求应该在 mounted 中发送请求。</li>
+<li><strong>created,mounted都可以</strong> 当是单个组件的时候，发送请求时，没有特殊要求的话，在前四个生命周期中，拿一个生命周期中都可以。</li>
+<li><strong>activated</strong> 当我们需要不断的切换或者点击组件的时候，需要缓存组件，防止重复渲染DOM，所以，在组件切换的过程中，会执行 activated 和 deactivated </li>
+<li><strong>destoryed</strong> 关闭页面记录视频的时间，初始化的时候从上一次的历史记录中获取视频播放的时间</li>
 </ol>
 </li>
 </ul>
